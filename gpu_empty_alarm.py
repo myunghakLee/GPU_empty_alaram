@@ -1,12 +1,8 @@
-
-# -*- coding: utf-8 -*-
-# +
 from email.mime.text import MIMEText
 import subprocess
 import argparse
 import smtplib
 import time
-import json
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--sleep_time', type=int, default=900, help="GPU Usage Measurement Cycle")
@@ -94,6 +90,7 @@ def main(args):
         s.sendmail(args.ID_s, args.ID_r, msg.as_string())
 
     gpu_num = len(args.gpu_id)
+    
     while(True):
         try:
             print("GPU is Not Empty")
