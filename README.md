@@ -15,7 +15,7 @@ https://myaccount.google.com/security
 
 After that, you need to create a password using "App password created".
 
-<img width="876" alt="image" src="https://user-images.githubusercontent.com/12128784/216520898-1c915b4f-df49-4747-af8b-562de488b7db.png">
+![image](https://user-images.githubusercontent.com/12128784/216536856-1138463d-864c-4ce5-9350-f922a74ec493.png)
 <br />
 <br />
 
