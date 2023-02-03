@@ -19,7 +19,6 @@ parser.add_argument('--PW_s', type=str, required=True, help="PW of the email to 
 parser.add_argument('--ID_r', type=str, required=True, help="ID of the email to be received")
 parser.add_argument('--mail_check', action='store_true')
 
-gpu_num = len(args.gpu_id)
 
 DEFAULT_ATTRIBUTES = (
     'index',
@@ -85,7 +84,7 @@ def main(args):
         s.login(args.ID_s, args.PW_s)
 
         title = "Mail Check."
-        content = "get_contents(info)"
+        content = get_contents(info)
 
         msg = MIMEText(content)
         msg['Subject'] = title
@@ -94,6 +93,7 @@ def main(args):
         print("The email was sent to check the email ID and password were appropriate.")
         s.sendmail(args.ID_s, args.ID_r, msg.as_string())
 
+    gpu_num = len(args.gpu_id)
     while(True):
         try:
             print("GPU is Not Empty")
@@ -103,9 +103,9 @@ def main(args):
                 info = get_gpu_info()
                 info = [info[i] for i in args.gpu_id]  # get gpu info that you selected
 
-                memory_used += sum([float(d['memory.used']) for d in A]) / gpu_num
-                utilization += sum([float(d['utilization.gpu']) for d in A]) / gpu_num
-                temperature += sum([float(d['temperature.gpu']) for d in A]) / gpu_num
+                memory_used += sum([float(d['memory.used']) for d in info]) / gpu_num
+                utilization += sum([float(d['utilization.gpu']) for d in info]) / gpu_num
+                temperature += sum([float(d['temperature.gpu']) for d in info]) / gpu_num
                 time.sleep(3)  # get gpu info every 3 second.
 
             memory_used /= args.it
@@ -116,7 +116,7 @@ def main(args):
             print(f"utilization : {utilization}")
             print(f"temperature : {temperature}")
 
-            if memory_used < args.memory_used and utilization < args.memory_utill:
+            if memory_used < args.memory_usage and utilization < args.memory_utill:
                 break
 
             time.sleep(args.sleep_time)
