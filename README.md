@@ -15,14 +15,14 @@ https://myaccount.google.com/security
 
 After that, you need to create a password using "App password created".
 
-<img width="876" alt="image" src="https://user-images.githubusercontent.com/12128784/216520898-1c915b4f-df49-4747-af8b-562de488b7db.png">
+![image](https://user-images.githubusercontent.com/12128784/216595523-06e99422-8e66-4d24-9b76-0fa4936419fd.png)
 <br />
 <br />
 
 ## usage
 ```
 python gpu_empty_alarm.py --gpu_id 0 1 2 --memory_usage 5000 --memory_utill 50 \
---ID_s [Your E-mail address] --PW_s [Your E-mail PW] --ID_r [Your ID for receive mail]
+--ID_s [Your E-mail address] --PW_s [Your E-mail PW] --ID_r [Your ID for receive mail] --mail_check
 ```
 
 <p>You have to change memory_usage and memory_utill</p>
