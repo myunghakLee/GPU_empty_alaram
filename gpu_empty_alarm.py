@@ -8,6 +8,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--sleep_time', type=int, default=900, help="GPU Usage Measurement Cycle")
 parser.add_argument('--gpu_id', default=[0], type=int, nargs='+', help="Number of Used GPU")
 parser.add_argument('--it', type=int, default=5, help="Number of measurements")
+parser.add_argument('--optional_text', type=str, default="", help="This is additional text option")
 parser.add_argument('--memory_usage', type=int, default=50, help="The memory usage threshold for sending mail.")
 parser.add_argument('--memory_utill', type=int, default=5000, help="The memory utill threshold for sending mail.")
 parser.add_argument('--ID_s', type=str, required=True, help="ID of the email to be sent")
@@ -113,7 +114,7 @@ def main(args):
             print(f"utilization : {utilization}")
             print(f"temperature : {temperature}")
 
-            if memory_used < args.memory_usage and utilization < args.memory_utill:
+            if memory_used < args.memory_usage: # and utilization < args.memory_utill:
                 break
 
             time.sleep(args.sleep_time)
@@ -131,7 +132,8 @@ def main(args):
     s.login(args.ID_s, args.PW_s)
 
     title = f"The GPU device is empty. {gpu_name}"
-    content = get_contents(info)
+    content = args.optional_text + "\n"
+    content += get_contents(info)
 
     msg = MIMEText(content)
     msg['Subject'] = title
