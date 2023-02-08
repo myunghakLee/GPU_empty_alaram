@@ -4,17 +4,20 @@ import argparse
 import smtplib
 import time
 
+# +
 parser = argparse.ArgumentParser()
-parser.add_argument('--sleep_time', type=int, default=900, help="GPU Usage Measurement Cycle")
 parser.add_argument('--gpu_id', default=[0], type=int, nargs='+', help="Number of Used GPU")
-parser.add_argument('--it', type=int, default=5, help="Number of measurements")
 parser.add_argument('--optional_text', type=str, default="", help="This is additional text option")
+
+parser.add_argument('--sleep_time', type=int, default=900, help="GPU Usage Measurement Cycle")
+parser.add_argument('--it', type=int, default=5, help="Number of measurements")
 parser.add_argument('--memory_usage', type=int, default=50, help="The memory usage threshold for sending mail.")
 parser.add_argument('--memory_utill', type=int, default=5000, help="The memory utill threshold for sending mail.")
 parser.add_argument('--ID_s', type=str, required=True, help="ID of the email to be sent")
 parser.add_argument('--PW_s', type=str, required=True, help="PW of the email to be sent")
 parser.add_argument('--ID_r', type=str, required=True, help="ID of the email to be received")
 parser.add_argument('--mail_check', action='store_true')
+# -
 
 
 DEFAULT_ATTRIBUTES = (
