@@ -19,7 +19,7 @@ After that, you need to create a password using "App password created".
 <br />
 <br />
 
-## usage
+## Usage
 ```
 python gpu_empty_alarm.py --gpu_id 0 1 2 --memory_usage 5000 --memory_utill 50 \
 --ID_s [Your E-mail address] --PW_s [Your E-mail PW] --ID_r [Your ID for receive mail] --mail_check
